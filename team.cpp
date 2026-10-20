@@ -1,19 +1,39 @@
 #include <iostream>
+using namespace std;
 
 int main()
 {
-  setlocale(LC_ALL, "Russian");
-  double x, y, R;
-  std::cout << "Введите радиус круга: ";
-  std::cin >> R;
-  std::cout << "Введите координаты точки (x y): ";
-  std::cin >> x >> y;
 
-  // Круг с центром в начале координат
-  if (x * x + y * y <= R * R)
-    std::cout << "Точка попадает в круг";
+  double x, y, r;
+  cout << "Проверка попадания точки в круг (центр в 0,0)" << endl;
+  cout << "Введите координату x: ";
+  cin >> x;
+  cout << "Введите координату y: ";
+  cin >> y;
+  cout << "Введите радиус круга R: ";
+  cin >> r;
+
+  if (r <= 0)
+  {
+    cout << "Ошибка: радиус должен быть положительным!" << endl;
+    return 0;
+  }
+
+  double distance_sq = x * x + y * y;
+  double radius_sq = r * r;
+
+  if (distance_sq < radius_sq)
+  {
+    cout << "Точка (" << x << ", " << y << ") находится ВНУТРИ круга." << endl;
+  }
+  else if (distance_sq == radius_sq)
+  {
+    cout << "Точка (" << x << ", " << y << ") находится НА ГРАНИЦЕ круга." << endl;
+  }
   else
-    std::cout << "Точка не попадает в круг";
+  {
+    cout << "Точка (" << x << ", " << y << ") находится СНАРУЖИ круга." << endl;
+  }
 
   return 0;
 }
